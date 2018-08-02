@@ -1,5 +1,5 @@
 package com.yavoric.lesson08.task01;
-
+//Переделана реализация согласно Задания 10
 import com.yavoric.lesson08.task01.CheckBox;
 import com.yavoric.lesson08.task01.RoundButton;
 
