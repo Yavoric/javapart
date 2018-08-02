@@ -5,20 +5,27 @@ import com.yavoric.lesson08.task01.RoundButton;
 
 public class Task01 {
     public static void main(String[] args) {
-        Component[] components = new Component[10];
+        Component[] components = new Component[30];
         //intputArreyComponent ();
+        for (int i = 0; i < components.length; i++) {
+            int с = 1 + (int) (Math.random() * 4);
+            switch (с) {
+                case 1:
+                    components[i] = new Label();
+                    break;
+                case 2:
+                    components[i] = new Button();
+                    break;
+                case 3:
+                    components[i] = new RoundButton();
+                    break;
+                case 4:
+                    components[i] = new CheckBox();
+                    break;
+                    default: break;
 
-
-        components[0] = new Label();
-        components[1] = new Button();
-        components[2] = new RoundButton();
-        components[3] = new CheckBox();
-        components[4] = new Label();
-        components[5] = new Button();
-        components[6] = new RoundButton();
-        components[7] = new CheckBox();
-        components[8] = new Label();
-        components[9] = new Button();
+            }
+        }
         System.out.println("Вывод всех компонентов");
         for (int i = 0; i < components.length; i++) {
             components[i].draw();
@@ -33,7 +40,7 @@ public class Task01 {
 
             }
 
-    /*public static Component intputArreyComponent  (components){
+    /*public static Component fillComponent  (components){
         for (int i = 0; i<10; i++){
             System.out.println("1-Label 2-Button- ");
             System.out.println("Выберите");
