@@ -1,5 +1,7 @@
 package com.yavoric.lesson14.task6;
 import java.util.*;
+import java.util.stream.Stream;
+import java.util.stream.Collectors;
 import java.util.Map.Entry;
 public class SubscriberMain {
     public static void main(String[] args) {
@@ -9,6 +11,9 @@ public class SubscriberMain {
         Subscriber[] subscriberArr = new Subscriber[100];
         fillSubscriberRandom(subscriberArr);
         // System.out.println (Arrays.toString(personArr));
+        //Из массива: исключить дубликаты, отсортировать по id, сохранить в список (List)
+        streamCollect();
+
         List<Subscriber> subscribersList = new ArrayList<>(Arrays.asList(subscriberArr));
         for (int i = 0; i < subscribersList.size(); i++) {
             System.out.println(subscribersList.get(i));
@@ -27,6 +32,17 @@ public class SubscriberMain {
         //System.out.println(subscribersList);
 
     }
+    private static void streamCollect() {
+        Subscriber[] subscriberArr = new Subscriber[100];
+        fillSubscriberRandom(subscriberArr);
+        List<Subscriber> subscribersList =
+                Arrays.stream(subscriberArr)
+                        .distinct()
+                        .sorted(Subscriber::compareTo)
+                        .collect(Collectors.toList());
+
+        System.out.println(subscribersList);
+    }
 
 
 
@@ -34,20 +50,15 @@ public class SubscriberMain {
     private static void fillSubscriberRandom(Subscriber[] subscriberArr) {
         String[] fName = {"Peter", "Helen", "Andry", "Abdel", "Kate", "Veronica", "Leonid", "Alex", "Max"};
         String[] lName = {"Ivanov","Petrov","Sidorov","Frolov","Kirilov","Maksimov","Saidov","Vavilov","Zairov"};
-        PhoneNumber phoneNumber = new PhoneNumber();
+        String[] number = {"0","1","2","3","4","5","6","7","8","9"};
+        String elementaryPhoneNumber = "999";
+        long id = 123456;
         final int ageFrom = 18;
         final int ageTo = 90;
-        long id = 123456;
-
-        for (int i = 0; i < subscriberArr.length; i++) {
-            id++;
-            int fNameIndex = (int) (Math.random() * fName.length);
-            int lNameIndex = (int) (Math.random() * lName.length);
-            String firstName =fName[fNameIndex];
-            String lastName = fName[lNameIndex];
-            int age = ageFrom + (int) (Math.random() * (ageTo - ageFrom));
-            subscriberArr[i] = new Subscriber(id, firstName,lastName, age, phoneNumber.getFullPnoneNumber());
+        for (Subscriber s : subscriberArr) {
+            subscriberArr[s].equals(id, ageFrom, ageTo,fName,lName, number, elementaryPhoneNumber);
         }
+
     }
 }
 
