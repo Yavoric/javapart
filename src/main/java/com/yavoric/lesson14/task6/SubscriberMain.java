@@ -52,12 +52,11 @@ public class SubscriberMain {
         String[] lName = {"Ivanov","Petrov","Sidorov","Frolov","Kirilov","Maksimov","Saidov","Vavilov","Zairov"};
         String[] number = {"0","1","2","3","4","5","6","7","8","9"};
         String elementaryPhoneNumber = "999";
-        long id = 123456;
+        long nId = 123456;
         final int ageFrom = 18;
         final int ageTo = 90;
-        for (Subscriber s : subscriberArr) {
-            subscriberArr[s].equals(id, ageFrom, ageTo,fName,lName, number, elementaryPhoneNumber);
-        }
+        for (int i =0; i<subscriberArr.length; i++) {
+            subscriberArr[i].equals1(nId, ageFrom, ageTo,fName,lName, number, elementaryPhoneNumber);       }
 
     }
 }

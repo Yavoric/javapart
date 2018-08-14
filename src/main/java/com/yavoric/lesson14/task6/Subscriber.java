@@ -7,34 +7,22 @@ public class Subscriber implements Comparable<Subscriber> {
     private String lastName;  	// фамилия
     private int age; 				// возраст
     private String phoneNumber; 	// телефонный номер (12 цифр: 380509373356)
-
-
-    public void setId(Long nId) {
-        nId ++;
-        id = nId;
+    public void setId(Long id) {
         this.id = id;
     }
-
-    public void setFirstName(String[] fName,String firstName) {
-        int fId = 0;
-        fId = (int) (Math.random() * (fName.length - 1));
-        firstName = fName[fId];
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
-    public void setLastName(String[] lName,String lastName) {
-        int fId = 0;
-        fId = (int) (Math.random() * lName.length - 1);
-        lastName = lName[fId];
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-    public void setAge(int age, int ageFrom,int ageTo) {
-        age = ageFrom + (int) (Math.random() * (ageTo - ageFrom));
+    public void setAge(int age) {
         this.age = age;
     }
-
-    public void setPhoneNumber( String[] number, String elementaryPhoneNumber, String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+    public void setPhoneNumber(String[] number, String elementaryPhoneNumber, String phoneNumber) {
         phoneNumber = elementaryPhoneNumber;
         for (int i =0; i<8;i++){
             int c = (int) (Math.random()* 9);
@@ -43,7 +31,6 @@ public class Subscriber implements Comparable<Subscriber> {
         phoneNumber = phoneNumber+"5";
         this.phoneNumber = phoneNumber;
     }
-
     public Long getId() {
         return id;
     }
@@ -60,13 +47,25 @@ public class Subscriber implements Comparable<Subscriber> {
         return phoneNumber;
     }
 
-    public  void equals(long nId,int ageFrom,int ageTo,String[] fName,String[] lName,
+    public  void equals1(long nId,int ageFrom,int ageTo,String[] fName,String[] lName,
                         String[] number, String elementaryPhoneNumber){
-        setId(nId);
-        setFirstName(fName, firstName);
-        setLastName(lName,lastName);
-        setAge(age,ageFrom,ageTo);
-        setPhoneNumber(number,elementaryPhoneNumber,phoneNumber);
+        nId ++;
+        this.id = nId;
+        int fId = 0;
+        fId = (int) (Math.random() * (fName.length - 1));
+        this.firstName = fName[fId];
+        fId = 0;
+        fId = (int) (Math.random() * lName.length - 1);
+        this.lastName = lName[fId];
+        int nage = ageFrom + (int) (Math.random() * (ageTo - ageFrom));
+        this.age = nage;
+        phoneNumber = elementaryPhoneNumber;
+        for (int i =0; i<8;i++){
+            int c = (int) (Math.random()* 9);
+            phoneNumber = phoneNumber+number[c];
+        }
+        this.phoneNumber = phoneNumber+"5";
+
     }
     public Subscriber(long id, String firstName, String lastName, int age, String phoneNumber) {
         this.id = id;
