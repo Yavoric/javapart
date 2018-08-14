@@ -9,6 +9,10 @@ public class PersonMain {
         personExr();
         PhoneNumber asd = new PhoneNumber();
         System.out.println ("Телефонный номер = "+asd.getFullPnoneNumber());
+
+
+
+
     }
 
     private static void personExr() {
@@ -29,8 +33,16 @@ public class PersonMain {
             System.out.println("person->"+entry.getValue());
             System.out.println("__________________________");
         }
-            personList.sort(Person::compareTo);
-            System.out.println(personList);
+
+            //personList.sort(Person::compareTo);
+        personList.sort((p1,p2)-> (p1.getName().compareTo(p2.getName())));
+        //personList.sort((a1)->Character.compare()
+            //System.out.println(personList);
+            for (Person p : personList) {
+                if (p.getAge() > 20 && p.getAge() < 50)
+                    System.out.println(p);
+            }
+
 
     }
 
@@ -51,4 +63,5 @@ public class PersonMain {
             personArr[i] = new Person(id, name, age);
         }
     }
+
 }
