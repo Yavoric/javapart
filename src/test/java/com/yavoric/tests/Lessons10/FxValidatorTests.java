@@ -1,5 +1,5 @@
 package com.yavoric.tests.Lessons10;
-import com.academy.fx.model.RegistrationForm;
+import com.yavoric.fx.model.RegistrationForm;
 import com.academy.fx.validator.RegistrationValidator;
 import org.testng.annotations.Test;
 import org.testng.Assert;
