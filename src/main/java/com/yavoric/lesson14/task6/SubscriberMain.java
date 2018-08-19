@@ -56,7 +56,7 @@ public class SubscriberMain {
         final int ageFrom = 18;
         final int ageTo = 90;
         for (int i =0; i<subscriberArr.length; i++) {
-            subscriberArr[i].equals1(nId, ageFrom, ageTo,fName,lName, number, elementaryPhoneNumber);       }
+            subscriberArr[i].genaraitSubscriber(nId, ageFrom, ageTo,fName,lName, number, elementaryPhoneNumber);       }
 
     }
 }

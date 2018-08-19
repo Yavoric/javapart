@@ -5,8 +5,21 @@ public class Subscriber implements Comparable<Subscriber> {
     private Long id; 				// уникальный идентификатор
     private String firstName; 	// имя
     private String lastName;  	// фамилия
+    private Gender gender; //пол
     private int age; 				// возраст
     private String phoneNumber; 	// телефонный номер (12 цифр: 380509373356)
+    private String operator;// Оператор
+
+    public Subscriber(long id, String firstName, String lastName,Gender gender, int age, String phoneNumber,String operator) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.age = age;
+        this.phoneNumber = phoneNumber;
+        this.operator = operator;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -22,15 +35,15 @@ public class Subscriber implements Comparable<Subscriber> {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    public void setPhoneNumber(String[] number, String elementaryPhoneNumber, String phoneNumber) {
-        phoneNumber = elementaryPhoneNumber;
-        for (int i =0; i<8;i++){
-            int c = (int) (Math.random()* 9);
-            phoneNumber = phoneNumber+number[c];
-        }
-        phoneNumber = phoneNumber+"5";
-        this.phoneNumber = phoneNumber;
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
+
+    public void setOperator(String operator) {
+        this.operator = operator;
+    }
+
     public Long getId() {
         return id;
     }
@@ -47,10 +60,9 @@ public class Subscriber implements Comparable<Subscriber> {
         return phoneNumber;
     }
 
-    public  void equals1(long nId,int ageFrom,int ageTo,String[] fName,String[] lName,
+    public  Subscriber genaraitSubscriber(long nId,int ageFrom,int ageTo,String[] fName,String[] lName,
                         String[] number, String elementaryPhoneNumber){
         nId ++;
-        this.id = nId;
         int fId = 0;
         fId = (int) (Math.random() * (fName.length - 1));
         this.firstName = fName[fId];
@@ -59,13 +71,13 @@ public class Subscriber implements Comparable<Subscriber> {
         this.lastName = lName[fId];
         int nage = ageFrom + (int) (Math.random() * (ageTo - ageFrom));
         this.age = nage;
-        phoneNumber = elementaryPhoneNumber;
+        /*phoneNumber = elementaryPhoneNumber;
         for (int i =0; i<8;i++){
             int c = (int) (Math.random()* 9);
             phoneNumber = phoneNumber+number[c];
-        }
-        this.phoneNumber = phoneNumber+"5";
-
+        }*/
+        this.id = nId;
+    return null;
     }
     public Subscriber(long id, String firstName, String lastName, int age, String phoneNumber) {
         this.id = id;
