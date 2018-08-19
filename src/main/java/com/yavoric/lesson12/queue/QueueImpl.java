@@ -10,7 +10,7 @@ public class QueueImpl<T> implements Queue<T> {
     private int pointer = -1;
     //private int pointer1 = 0;
 
-   QueueImpl(T[] array) {
+   public QueueImpl(T[] array) {
         this.array = array;
     }
 
