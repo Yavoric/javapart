@@ -11,7 +11,7 @@ public class TestRunner {
         Method[] methods = clazz.getDeclaredMethods();
         for (Method method : methods) {
             if (method.isAnnotationPresent(Test.class)) {
-//                method.getAnnotation().
+//               method.getAnnotation().
                 if (method.isAnnotationPresent(Log.class)) {
                     System.out.println(method.getName());
                     method.invoke(curTests);
