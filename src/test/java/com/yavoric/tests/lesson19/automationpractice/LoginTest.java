@@ -1,10 +1,12 @@
-package com.yavoric.tests.Lesson19.automationpractice;
+package com.yavoric.tests.lesson19.automationpractice;
 
 import com.yavoric.lesson18.manager.PropertyManager;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 import static org.testng.Assert.assertEquals;
@@ -18,10 +20,24 @@ public class LoginTest {
     private PropertyManager propertyManager = PropertyManager.getInstance();
 
 
+@Parameters("browser")
     @BeforeClass(alwaysRun = true)
-    public void setUp() throws Exception {
-        System.setProperty("webdriver.gecko.driver", propertyManager.getProperty("firefox.driver"));
-        driver = new FirefoxDriver();
+    public void setUp(String browser) throws Exception {
+        switch (browser) {
+            case "chrome":
+                System.setProperty("webdriver.chrome.driver", propertyManager.getProperty("chrome.driver"));
+                driver = new ChromeDriver();
+                break;
+
+            case "firefox":
+                System.setProperty("webdriver.gecko.driver", propertyManager.getProperty("firefox.driver"));
+                driver = new FirefoxDriver();
+                break;
+
+            default:
+        }
+        //System.setProperty("webdriver.gecko.driver", propertyManager.getProperty("firefox.driver"));
+        //driver = new FirefoxDriver();
         baseUrl = propertyManager.getProperty("automation.baseurl");
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
