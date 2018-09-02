@@ -3,10 +3,18 @@
 
 <!--Конфигурация для testNG фреймворка-->
 <suite name="suit">
-    <test name="tests">
+    <test name="test1">
+        <parameter name="browser" value="chrome" />
         <packages>
-            <!--Запускаем все тесты из пакета 'com.academy.tests.*'-->
-            <package name="com.yavoric.tests.Lessons10.*" />
+            <!--Запускаем все тесты из пакета 'com.academy.tests.'-->
+            <package name="com.yavoric.tests.lesson22.*" />
+        </packages>
+    </test>
+    <test name="test2">
+        <parameter name="browser" value="firefox" />
+        <packages>
+            <!--Запускаем все тесты из пакета 'com.academy.tests.'-->
+            <package name="com.yavoric.tests.lesson22.*" />
         </packages>
     </test>
 </suite>
